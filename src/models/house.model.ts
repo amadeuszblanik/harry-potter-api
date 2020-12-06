@@ -1,4 +1,11 @@
-import { House } from '../interfaces/house.interface';
+import { House, HouseName } from '../interfaces/house.interface';
+
+export const houseNamesModel: HouseName[] = [
+  'Gryffindor',
+  'Ravenclaw',
+  'Slytherin',
+  'Hufflepuff',
+];
 
 const houseModel: House[] = [
   {

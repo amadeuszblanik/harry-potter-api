@@ -1,9 +1,11 @@
+import { HouseName } from './house.interface';
+
 export interface People {
   _id: string;
   name: string;
   wand?: string;
   role?: string;
-  house?: string;
+  house?: HouseName;
   school?: string;
   __v: number;
   patronus?: string;

@@ -5,6 +5,8 @@ tags:
     description: House API
   - name: spell
     description: Spell API
+  - name: sorting-hat
+    description: Sorting hat API
 
 paths:
 # [GET] people
@@ -69,6 +71,7 @@ paths:
         description: 'OK'
       500:
         description: 'Server Error'
+
 # [GET] house/id
 /house/id/{id}:
   get:
@@ -157,6 +160,18 @@ paths:
         description: 'OK'
       404:
         description: 'Not found'
+      500:
+        description: 'Server Error'
+
+# [GET] sorting hat
+/sorting-hat/:
+  get:
+    tags:
+      - sorting-hat
+    summary: Get random house name
+    responses:
+      200:
+        description: 'OK'
       500:
         description: 'Server Error'
 
