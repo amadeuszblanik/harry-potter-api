@@ -24,6 +24,21 @@ class SpellController {
       next(error);
     }
   };
+
+  public getByName = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ) => {
+    const name: string = String(req.params.name);
+
+    try {
+      const findOnePersonData: Spell = await this.service.findByName(name);
+      res.status(200).json({ data: findOnePersonData, message: 'findOne' });
+    } catch (error) {
+      next(error);
+    }
+  };
 }
 
 export default SpellController;
