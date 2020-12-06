@@ -8,7 +8,7 @@ import { TokenData } from '../interfaces/auth.interface';
 import AuthService from '../services/auth.service';
 
 afterAll(async () => {
-  await new Promise(resolve => setTimeout(() => resolve(), 500));
+  await new Promise((resolve) => setTimeout(() => resolve(), 500));
 });
 
 describe('Testing Auth', () => {
@@ -22,8 +22,8 @@ describe('Testing Auth', () => {
       const app = new App([authRoute]);
 
       return request(app.getServer())
-                .post(`${authRoute.path}/signup`)
-                .send(userData);
+        .post(`${authRoute.path}/signup`)
+        .send(userData);
     });
   });
 
@@ -38,9 +38,9 @@ describe('Testing Auth', () => {
       const app = new App([authRoute]);
 
       return request(app.getServer())
-                .post(`${authRoute.path}/login`)
-                .send(userData)
-                .expect('Set-Cookie', /^Authorization=.+/);
+        .post(`${authRoute.path}/login`)
+        .send(userData)
+        .expect('Set-Cookie', /^Authorization=.+/);
     });
   });
 
@@ -50,8 +50,8 @@ describe('Testing Auth', () => {
       const app = new App([authRoute]);
 
       return request(app.getServer())
-                .post(`${authRoute.path}/logout`)
-                .expect('Set-Cookie', /^Authorization=\;/);
+        .post(`${authRoute.path}/logout`)
+        .expect('Set-Cookie', /^Authorization=\;/);
     });
   });
 });

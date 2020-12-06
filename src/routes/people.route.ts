@@ -14,7 +14,10 @@ class PeopleRoute implements Route {
   private initializeRoutes() {
     this.router.get(`${this.path}`, this.usersController.getAll);
     this.router.get(`${this.path}/id/:id`, this.usersController.getById);
-    this.router.get(`${this.path}/search/:name`, this.usersController.getByName);
+    this.router.get(
+      `${this.path}/search/:name`,
+      this.usersController.getByName
+    );
   }
 }
 

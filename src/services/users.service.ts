@@ -14,33 +14,46 @@ class UserService {
   }
 
   public async findUserById(userId: number): Promise<User> {
-    const findUser: User = this.users.find(user => user.id === userId);
+    const findUser: User = this.users.find((user) => user.id === userId);
     if (!findUser) throw new HttpException(409, "You're not user");
 
     return findUser;
   }
 
   public async createUser(userData: CreateUserDto): Promise<User> {
-    if (isEmptyObject(userData)) throw new HttpException(400, "You're not userData");
+    if (isEmptyObject(userData))
+      throw new HttpException(400, "You're not userData");
 
-    const findUser: User = this.users.find(user  => user.email === userData.email);
-    if (findUser) throw new HttpException(409, `You're email ${userData.email} already exists`);
+    const findUser: User = this.users.find(
+      (user) => user.email === userData.email
+    );
+    if (findUser)
+      throw new HttpException(
+        409,
+        `You're email ${userData.email} already exists`
+      );
 
     const hashedPassword = await bcrypt.hash(userData.password, 10);
-    const createUserData: User = { id: (this.users.length + 1), ...userData, password: hashedPassword };
+    const createUserData: User = {
+      id: this.users.length + 1,
+      ...userData,
+      password: hashedPassword,
+    };
 
     return createUserData;
   }
 
   public async updateUser(userId: number, userData: User): Promise<User[]> {
-    if (isEmptyObject(userData)) throw new HttpException(400, "You're not userData");
+    if (isEmptyObject(userData))
+      throw new HttpException(400, "You're not userData");
 
-    const findUser: User = this.users.find(user => user.id === userId);
+    const findUser: User = this.users.find((user) => user.id === userId);
     if (!findUser) throw new HttpException(409, "You're not user");
 
     const hashedPassword = await bcrypt.hash(userData.password, 10);
     const updateUserData: User[] = this.users.map((user: User) => {
-      if (user.id === findUser.id) user = { id: userId, ...userData, password: hashedPassword };
+      if (user.id === findUser.id)
+        user = { id: userId, ...userData, password: hashedPassword };
       return user;
     });
 
@@ -48,10 +61,12 @@ class UserService {
   }
 
   public async deleteUser(userId: number): Promise<User[]> {
-    const findUser: User = this.users.find(user => user.id === userId);
+    const findUser: User = this.users.find((user) => user.id === userId);
     if (!findUser) throw new HttpException(409, "You're not user");
 
-    const deleteUserData: User[] = this.users.filter(user => user.id !== findUser.id);
+    const deleteUserData: User[] = this.users.filter(
+      (user) => user.id !== findUser.id
+    );
     return deleteUserData;
   }
 }
