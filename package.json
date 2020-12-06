@@ -5,7 +5,7 @@
     "start": "cross-env NODE_ENV=production ts-node --transpile-only src/server.ts",
     "dev": "cross-env NODE_ENV=development nodemon --watch src --delay 1 --exec 'ts-node' src/server.ts",
     "test": "jest --forceExit --detectOpenHandles",
-    "lint": "tslint -p tsconfig.json -c tslint.json"
+    "lint": "eslint \"**/*.ts\" --ignore-pattern node_modules/"
   },
   "dependencies": {
     "bcrypt": "^5.0.0",
