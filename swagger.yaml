@@ -1,89 +1,32 @@
 tags:
-- name: users
-  description: Users API
+  - name: people
+    description: people API
+
 
 paths:
-# [POST] users
-  /users/:
-    post:
-      tags:
-      - users
-      summary: Add User
-      parameters:
-      - name: body
-        in: body
-        description: user Data
-        required: true
-        schema:
-          $ref: '#/definitions/users'
-      responses:
-        201:
-          description: 'Created'
-        400:
-          description: 'Bad Request'
-        409:
-          description: 'Conflict'
-        500:
-          description: 'Server Error'
-
-# [GET] users/id
-  /users/{id}:
+# [GET] people
+  /people/:
     get:
       tags:
-      - users
-      summary: Find User By Id
-      parameters:
-      - name: id
-        in: path
-        description: User Id
-        required: true
-        type: integer
+        - people
+      summary: Get people list
       responses:
         200:
           description: 'OK'
-        409:
-          description: 'Conflict'
         500:
           description: 'Server Error'
-
-# [PUT] users/id
-    put:
+  # [GET] users/id
+  /people/{name}:
+    get:
       tags:
-      - users
-      summary: Update User By Id
+        - people
+      summary: Find person by name
       parameters:
-      - name: id
-        in: path
-        description: user Id
-        required: true
-        type: integer
-      - name: body
-        in: body
-        description: user Data
-        required: true
-        schema:
-          $ref: '#/definitions/users'
-      responses:
-        200:
-          description: 'OK'
-        400:
-          description: 'Bad Request'
-        409:
-          description: 'Conflict'
-        500:
-          description: 'Server Error'
-
-# [DELETE] users/id
-    delete:
-      tags:
-      - users
-      summary: Delete User By Id
-      parameters:
-      - name: id
-        in: path
-        description: user Id
-        required: true
-        type: integer
+        - name: name
+          in: path
+          description: Person name
+          required: true
+          type: string
       responses:
         200:
           description: 'OK'
@@ -91,24 +34,6 @@ paths:
           description: 'Conflict'
         500:
           description: 'Server Error'
-
-# definitions
-definitions:
-  users:
-    type: object
-    required:
-        - email
-        - password
-    properties:
-      id:
-        type: integer
-        description: user Id
-      email:
-        type: string
-        description: user Email
-      password:
-        type: string
-        description: user Password
 
 schemes:
  - https
