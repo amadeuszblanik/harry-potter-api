@@ -6,7 +6,7 @@ import UserRoute from '../routes/users.route';
 import { CreateUserDto } from 'dtos/users.dto';
 
 afterAll(async () => {
-  await new Promise(resolve => setTimeout(() => resolve(), 500));
+  await new Promise((resolve) => setTimeout(() => resolve(), 500));
 });
 
 describe('Testing Users', () => {
@@ -17,21 +17,21 @@ describe('Testing Users', () => {
       const app = new App([usersRoute]);
 
       return request(app.getServer())
-      .get(`${usersRoute.path}`)
-      .expect(200, { data: findUser, message: 'findAll' });
+        .get(`${usersRoute.path}`)
+        .expect(200, { data: findUser, message: 'findAll' });
     });
   });
 
   describe('[GET] /users/:id', () => {
     it('response statusCode 200 / findOne', () => {
       const userId: number = 1;
-      const findUser: User = userModel.find(user => user.id === userId);
+      const findUser: User = userModel.find((user) => user.id === userId);
       const usersRoute = new UserRoute();
       const app = new App([usersRoute]);
 
       return request(app.getServer())
-      .get(`${usersRoute.path}/${userId}`)
-      .expect(200, { data: findUser, message: 'findOne' });
+        .get(`${usersRoute.path}/${userId}`)
+        .expect(200, { data: findUser, message: 'findOne' });
     });
   });
 
@@ -45,9 +45,9 @@ describe('Testing Users', () => {
       const app = new App([usersRoute]);
 
       return request(app.getServer())
-      .post(`${usersRoute.path}`)
-      .send(userData)
-      .expect(201);
+        .post(`${usersRoute.path}`)
+        .send(userData)
+        .expect(201);
     });
   });
 
@@ -62,22 +62,22 @@ describe('Testing Users', () => {
       const app = new App([usersRoute]);
 
       return request(app.getServer())
-      .put(`${usersRoute.path}/${userId}`)
-      .send(userData)
-      .expect(200);
+        .put(`${usersRoute.path}/${userId}`)
+        .send(userData)
+        .expect(200);
     });
   });
 
   describe('[DELETE] /users/:id', () => {
     it('response statusCode 200 / deleted', () => {
       const userId = 1;
-      const deleteUser: User[] = userModel.filter(user => user.id !== userId);
+      const deleteUser: User[] = userModel.filter((user) => user.id !== userId);
       const usersRoute = new UserRoute();
       const app = new App([usersRoute]);
 
       return request(app.getServer())
-      .delete(`${usersRoute.path}/${userId}`)
-      .expect(200, { data: deleteUser, message: 'deleted' });
+        .delete(`${usersRoute.path}/${userId}`)
+        .expect(200, { data: deleteUser, message: 'deleted' });
     });
   });
 });

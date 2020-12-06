@@ -13,9 +13,13 @@ class UsersController {
     } catch (error) {
       next(error);
     }
-  }
+  };
 
-  public getUserById = async (req: Request, res: Response, next: NextFunction) => {
+  public getUserById = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ) => {
     const userId: number = Number(req.params.id);
 
     try {
@@ -24,9 +28,13 @@ class UsersController {
     } catch (error) {
       next(error);
     }
-  }
+  };
 
-  public createUser = async (req: Request, res: Response, next: NextFunction) => {
+  public createUser = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ) => {
     const userData: CreateUserDto = req.body;
 
     try {
@@ -35,22 +43,33 @@ class UsersController {
     } catch (error) {
       next(error);
     }
-  }
+  };
 
-  public updateUser = async (req: Request, res: Response, next: NextFunction) => {
+  public updateUser = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ) => {
     const userId: number = Number(req.params.id);
     const userData: User = req.body;
 
     try {
-      const updateUserData: User[] = await this.userService.updateUser(userId, userData);
+      const updateUserData: User[] = await this.userService.updateUser(
+        userId,
+        userData
+      );
       res.status(200).json({ data: updateUserData, message: 'updated' });
     } catch (error) {
       next(error);
     }
-  }
+  };
 
-  public deleteUser = async (req: Request, res: Response, next: NextFunction) => {
-    const userId : number = Number(req.params.id);
+  public deleteUser = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ) => {
+    const userId: number = Number(req.params.id);
 
     try {
       const deleteUserData: User[] = await this.userService.deleteUser(userId);
@@ -58,7 +77,7 @@ class UsersController {
     } catch (error) {
       next(error);
     }
-  }
+  };
 }
 
 export default UsersController;

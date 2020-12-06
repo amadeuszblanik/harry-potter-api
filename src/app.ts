@@ -9,7 +9,7 @@ import errorMiddleware from './middlewares/error.middleware';
 
 class App {
   public app: express.Application;
-  public port: (string | number);
+  public port: string | number;
   public env: boolean;
 
   constructor(routes: Routes[]) {
