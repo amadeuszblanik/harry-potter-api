@@ -12,7 +12,7 @@ class PeopleService {
 
   public async findById(idToFind: string): Promise<House> {
     const findElement: House = this.house.find(({ _id }) => _id === idToFind);
-    if (!findElement) throw new HttpException(409, "You're not user");
+    if (!findElement) throw new HttpException(404, 'House not found');
 
     return findElement;
   }
