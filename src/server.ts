@@ -6,6 +6,7 @@ import UsersRoute from './routes/users.route';
 import validateEnv from './utils/validateEnv';
 import PeopleRoute from './routes/people.route';
 import HouseRoute from './routes/house.route';
+import SpellRoute from './routes/spell.route';
 
 validateEnv();
 
@@ -15,6 +16,7 @@ const app = new App([
   new AuthRoute(),
   new PeopleRoute(),
   new HouseRoute(),
+  new SpellRoute(),
 ]);
 
 app.listen();

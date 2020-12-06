@@ -2,7 +2,7 @@ import { NextFunction, Request, Response } from 'express';
 import houseService from '../services/house.service';
 import { House } from '../interfaces/house.interface';
 
-class PeopleController {
+class HouseController {
   public service = new houseService();
 
   public getAll = async (
@@ -34,4 +34,4 @@ class PeopleController {
   };
 }
 
-export default PeopleController;
+export default HouseController;
