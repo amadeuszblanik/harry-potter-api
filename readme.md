@@ -1,5 +1,9 @@
 # Harry Potter API
 
+## Useful links
+* [Heroku](https://bme-potter-api.herokuapp.com/)
+* [Swagger](https://bme-potter-api.herokuapp.com/swagger/)
+
 Harry Potter API is a node.js library for API.
 
 ## Installation
