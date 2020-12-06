@@ -1,7 +1,8 @@
 tags:
   - name: people
-    description: people API
-
+    description: People API
+  - name: house
+    description: House API
 
 paths:
 # [GET] people
@@ -15,25 +16,56 @@ paths:
           description: 'OK'
         500:
           description: 'Server Error'
-  # [GET] users/id
-  /people/{name}:
+  # [GET] people/id
+  /people/{id}:
     get:
       tags:
         - people
-      summary: Find person by name
+      summary: Find person by id
       parameters:
-        - name: name
+        - name: id
           in: path
-          description: Person name
+          description: Person id
           required: true
           type: string
       responses:
         200:
           description: 'OK'
-        409:
-          description: 'Conflict'
+        404:
+          description: 'Not found'
         500:
           description: 'Server Error'
+
+# [GET] house
+/house/:
+  get:
+    tags:
+      - house
+    summary: Get house list
+    responses:
+      200:
+        description: 'OK'
+      500:
+        description: 'Server Error'
+# [GET] house/id
+/house/{id}:
+  get:
+    tags:
+      - house
+    summary: Find house by id
+    parameters:
+      - name: id
+        in: path
+        description: House id
+        required: true
+        type: string
+    responses:
+      200:
+        description: 'OK'
+      404:
+        description: 'Not found'
+      500:
+        description: 'Server Error'
 
 schemes:
  - https

@@ -5,18 +5,16 @@ import peopleModel from '../models/people.model';
 class PeopleService {
   public people = peopleModel;
 
-  public async findAllPeople(): Promise<People[]> {
+  public async findAll(): Promise<People[]> {
     const people: People[] = this.people;
     return people;
   }
 
-  public async findPersonByName(nameToFind: string): Promise<People> {
-    const findUser: People = this.people.find(({ name }) =>
-      name.includes(nameToFind)
-    );
-    if (!findUser) throw new HttpException(409, "You're not user");
+  public async findById(idToFind: string): Promise<People> {
+    const findData: People = this.people.find(({ _id }) => _id === idToFind);
+    if (!findData) throw new HttpException(404, 'Person not found');
 
-    return findUser;
+    return findData;
   }
 }
 
