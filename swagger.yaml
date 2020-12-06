@@ -3,6 +3,8 @@ tags:
     description: People API
   - name: house
     description: House API
+  - name: spell
+    description: Spell API
 
 paths:
 # [GET] people
@@ -57,6 +59,37 @@ paths:
       - name: id
         in: path
         description: House id
+        required: true
+        type: string
+    responses:
+      200:
+        description: 'OK'
+      404:
+        description: 'Not found'
+      500:
+        description: 'Server Error'
+
+# [GET] house
+/spell/:
+  get:
+    tags:
+      - spell
+    summary: Get spell list
+    responses:
+      200:
+        description: 'OK'
+      500:
+        description: 'Server Error'
+# [GET] house/id
+/spell/{id}:
+  get:
+    tags:
+      - spell
+    summary: Find spell by id
+    parameters:
+      - name: id
+        in: path
+        description: Spell id
         required: true
         type: string
     responses:
