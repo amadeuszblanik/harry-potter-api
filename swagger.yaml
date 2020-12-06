@@ -19,7 +19,7 @@ paths:
         500:
           description: 'Server Error'
   # [GET] people/id
-  /people/{id}:
+  /people/id/{id}:
     get:
       tags:
         - people
@@ -38,6 +38,26 @@ paths:
         500:
           description: 'Server Error'
 
+# [GET] people/search
+/people/search/{name}:
+  get:
+    tags:
+      - people
+    summary: Find people by phrase search
+    parameters:
+      - name: name
+        in: path
+        description: Phrase to search
+        required: true
+        type: string
+    responses:
+      200:
+        description: 'OK'
+      404:
+        description: 'Not found'
+      500:
+        description: 'Server Error'
+
 # [GET] house
 /house/:
   get:
@@ -50,7 +70,7 @@ paths:
       500:
         description: 'Server Error'
 # [GET] house/id
-/house/{id}:
+/house/id/{id}:
   get:
     tags:
       - house
@@ -69,7 +89,27 @@ paths:
       500:
         description: 'Server Error'
 
-# [GET] house
+# [GET] house/search
+/house/search/{name}:
+  get:
+    tags:
+      - house
+    summary: Find house by phrase search
+    parameters:
+      - name: name
+        in: path
+        description: Phrase to search
+        required: true
+        type: string
+    responses:
+      200:
+        description: 'OK'
+      404:
+        description: 'Not found'
+      500:
+        description: 'Server Error'
+
+# [GET] spell
 /spell/:
   get:
     tags:
@@ -80,8 +120,8 @@ paths:
         description: 'OK'
       500:
         description: 'Server Error'
-# [GET] house/id
-/spell/{id}:
+# [GET] spell/id
+/spell/id/{id}:
   get:
     tags:
       - spell
@@ -90,6 +130,26 @@ paths:
       - name: id
         in: path
         description: Spell id
+        required: true
+        type: string
+    responses:
+      200:
+        description: 'OK'
+      404:
+        description: 'Not found'
+      500:
+        description: 'Server Error'
+
+# [GET] spell/search
+/spell/search/{name}:
+  get:
+    tags:
+      - spell
+    summary: Find spell by phrase search
+    parameters:
+      - name: name
+        in: path
+        description: Phrase to search
         required: true
         type: string
     responses:

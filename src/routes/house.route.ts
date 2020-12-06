@@ -13,7 +13,8 @@ class HouseRoute implements Route {
 
   private initializeRoutes() {
     this.router.get(`${this.path}`, this.controller.getAll);
-    this.router.get(`${this.path}/:id`, this.controller.getById);
+    this.router.get(`${this.path}/id/:id`, this.controller.getById);
+    this.router.get(`${this.path}/search/:name`, this.controller.getByName);
   }
 }
 
